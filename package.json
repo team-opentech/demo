@@ -40,6 +40,8 @@
     "@mui/material": "^5.15.20",
     "@mui/x-data-grid": "^6.20.1",
     "@netlify/edge-functions": "^2.0.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.12.7",
     "@typescript-eslint/eslint-plugin": "^7.7.1",
