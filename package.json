@@ -65,6 +65,8 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "dependencies": {
-    
+    "@headlessui/react": "^1.7.19",
+    "@heroicons/react": "^2.1.4",
+    "graphql": "^16.8.2"
   }
 }
