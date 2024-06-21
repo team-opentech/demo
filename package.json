@@ -32,6 +32,9 @@
     "@builder.io/qwik": "^1.5.7",
     "@builder.io/qwik-city": "^1.5.7",
     "@builder.io/sdk-qwik": "^0.14.10",
+    "@builder.io/qwik-react": "^0.5.4",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
     "@netlify/edge-functions": "^2.0.0",
     "@types/eslint": "^8.56.10",
     "@types/node": "^20.12.7",
@@ -39,6 +42,8 @@
     "@typescript-eslint/parser": "^7.7.1",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.57.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "eslint-plugin-qwik": "^1.5.7",
     "netlify-cli": "^15.0.0",
     "postcss": "^8.4.31",
@@ -49,5 +54,8 @@
     "undici": "*",
     "vite": "^5.2.10",
     "vite-tsconfig-paths": "^4.2.1"
+  },
+  "dependencies": {
+    
   }
 }
