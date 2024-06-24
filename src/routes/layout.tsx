@@ -1,38 +1,52 @@
-import { component$, Slot, useStyles$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
-import type { RequestHandler } from "@builder.io/qwik-city";
-
-import Header from "../components/starter/header/header";
-import Footer from "../components/starter/footer/footer";
-
-import styles from "./styles.css?inline";
+import {
+  component$,
+  useStylesScoped$,
+  Slot,
+  useStore,
+  useVisibleTask$,
+} from "@builder.io/qwik";
+import Footer from "~/components/footer/footer";
+import Header from "~/components/header/header";
+import { RequestHandler } from "@builder.io/qwik-city";
+import styles from "./layout.css?inline";
+import { inlineTranslate } from "qwik-speak";
+import { PaginationProvider } from "~/context";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
-  // Control caching for this request for best performance and to reduce hosting costs:
-  // https://qwik.dev/docs/caching/
   cacheControl({
-    // Always serve a cached response by default, up to a week stale
     staleWhileRevalidate: 60 * 60 * 24 * 7,
-    // Max once every 5 seconds, revalidate on the server to get a fresh version of this page
-    maxAge: 5,
+    maxAge: 30,
   });
 };
 
-export const useServerTimeLoader = routeLoader$(() => {
-  return {
-    date: new Date().toISOString(),
-  };
-});
-
 export default component$(() => {
-  useStyles$(styles);
+  useStylesScoped$(styles);
+  const state = useStore({ isToggled: false });
+  const { isToggled } = state;
+  const t = inlineTranslate();
+// eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(() => {
+    const navigationEntries = performance.getEntriesByType("navigation");
+    if (navigationEntries.length > 0) {
+      const navigationEntry =
+        navigationEntries[0] as PerformanceNavigationTiming;
+      if (navigationEntry.type === "reload") {
+        window.scrollTo(0, 0);
+      }
+    }
+    const layout = document.getElementById("layout");
+    if (layout) layout.classList.remove("opacity-0");
+  });
+
   return (
-    <>
-      <Header />
+    <PaginationProvider>
       <main>
-        <Slot />
+        <Header />
+        <div id="layout" class="mt-[124px] lg:mt-[150px] opacity-0">
+          <Slot />
+        </div>
+        <Footer />
       </main>
-      <Footer />
-    </>
+    </PaginationProvider>
   );
 });

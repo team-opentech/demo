@@ -1,0 +1,52 @@
+header {
+  display: flex;
+  background: var(--ot-white);
+  border-bottom: 10px solid var(--ot-white);
+}
+
+header .logo a {
+  display: inline-block;
+  padding: 10px 10px 7px 20px;
+}
+
+header ul {
+  margin: 0;
+  padding: 3px 10px 0 0;
+  list-style: none;
+  flex: 1;
+  text-align: right;
+}
+
+header li {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}
+
+header li a {
+  display: inline-block;
+  padding: 15px 10px;
+  text-decoration: none;
+}
+
+header li a:hover {
+  text-decoration: underline;
+}
+
+.menu-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 1px;
+  height: 1px;
+  background-color: black;
+  border-radius: 50%;
+  z-index: 40;
+  transition: transform 1.5s ease-in-out;
+  transform-origin: center;
+}
+
+.menu-animation-active {
+  transform: translate(-50%, -50%) scale(10000);
+}

@@ -1,0 +1,32 @@
+#circle-item {
+  margin-right: -2px;
+}
+
+.accordion-button {
+  margin-left: calc(50% - 84.1px);
+}
+
+.content {
+  max-height: 0px;
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.content.show {
+  height: auto;
+  max-height: 999px;
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.animate-scale {
+  animation: scaleAnimation 1s ease-in-out infinite;
+}
+
+@keyframes scaleAnimation {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}

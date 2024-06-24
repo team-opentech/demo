@@ -1,0 +1,11 @@
+h2 {
+  @apply font-bold text-2xl leading-tight;
+}
+
+h3 {
+  @apply font-medium text-lg;
+}
+
+.divider {
+  @apply h-[1px] w-full bg-ot-gray my-7;
+}

@@ -1,0 +1,25 @@
+.has-animation {
+  animation: fill 6s linear forwards;
+}
+
+@keyframes fill {
+  0% {
+    height: 0px;
+  }
+  100% {
+    height: 100px;
+  }
+}
+
+.animate-change {
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

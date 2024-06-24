@@ -1,0 +1,28 @@
+#circle-item {
+  margin-right: -2px;
+}
+
+.accordion-button {
+  margin-left: calc(50% - 84.1px);
+}
+
+.content {
+  max-height: 0px;
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.content-image {
+  max-height: 0px;
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.content.show {
+  height: auto;
+  max-height: 999px;
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.content-image.show {
+  max-height: 999px;
+  transition: all 0.75s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
