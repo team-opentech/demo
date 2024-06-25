@@ -198,7 +198,7 @@ export default component$(() => {
                 class="block rounded-md bg-ot-light-gray sm:pr-0 lg:pr-40 pl-2 py-1.5 text-sm sm:text-sm  placeholder:text-sm placeholder:text-ot-black"
               />
               <div class="absolute inset-y-0 right-0 flex py-3 lg:py-2 pr-1.5">
-                <ImgSearchIcon alt="" class="h-3" />
+                <ImgSearchIcon class="h-3" />
               </div>
             </div>
             <div class="relative flex justify-end mt-4 md:mt-0 md:block">
