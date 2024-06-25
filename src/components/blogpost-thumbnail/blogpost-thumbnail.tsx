@@ -1,14 +1,14 @@
 import {
   component$,
   useStylesScoped$,
-  useVisibleTask$,
+  // useVisibleTask$,
 } from "@builder.io/qwik";
 import OpentechButton from "~/components/ot-button/ot-button";
 import styles from "./blogpost-thumbnail.css?inline";
 import { useNavigate } from "@builder.io/qwik-city";
-import ScrollReveal from "scrollreveal";
-import ImgNextArrow from "../../assets/svg/next-arrow.svg?jsx";
-import ImgBanner from "../../assets/img/sample-image-2.webp?jsx";
+// import ScrollReveal from "scrollreveal";
+// import ImgNextArrow from "../../assets/svg/next-arrow.svg?jsx";
+// import ImgBanner from "../../assets/img/sample-image-2.webp?jsx";
 
 interface BlogProps {
   title: string;
@@ -59,8 +59,11 @@ export default component$(
         {isReversed ? (
           /* IMAGEN IZQUIERDA */
           <div
+            // onClick$={() => {
+            //   navigate(`/blog/${postSlug}/`);   ****Hook anterior para navegar
+            // }}
             onClick$={() => {
-              navigate(`/blog/${postSlug}/`);
+              navigate(`${postSlug}`);
             }}
             class={`mb-24 mx-4 bg-ot-light-gray rounded-2xl lg:flex lg:flex-row-reverse cursor-pointer`}
           >
@@ -76,13 +79,14 @@ export default component$(
                 <OpentechButton
                   title={"Leer Mas"}
                   paddingX={"px-7 py-2"}
-                  link={`/blog/${postSlug}/`}
+                  // link={`/blog/${postSlug}/`}
+                  link={`${postSlug}`}
                   classes="hover:scale-[1.1] active:scale-[1.1] transition-all duration-300"
                 />
 
                 {/* <div class="flex flex-row space-x-4 lg:space-x-8 items-center">
-                  <ImgNextArrow class="h-6 lg:h-8 rotate-180" />
-                  <ImgNextArrow class="h-6 lg:h-8" />
+                  <ImgNextArrow alt="" class="h-6 lg:h-8 rotate-180" />
+                  <ImgNextArrow alt="" class="h-6 lg:h-8" />
                 </div> */}
               </div>
             </div>
@@ -99,7 +103,8 @@ export default component$(
           /* IMAGEN DERECHA */
           <div
             onClick$={() => {
-              navigate(`/blog/${postSlug}/`);
+              // navigate(`/blog/${postSlug}/`);
+              navigate(`${postSlug}`);
             }}
             class={`mb-24 mx-4 bg-ot-light-gray rounded-2xl lg:flex lg:flex-row cursor-pointer`}
           >
@@ -116,13 +121,14 @@ export default component$(
                 <OpentechButton
                   title={"Leer Mas"}
                   paddingX={"px-7 py-2"}
-                  link={`/blog/${postSlug}/`}
+                  // link={`/blog/${postSlug}/`}
+                  link={`${postSlug}`}
                   classes="hover:scale-[1.1] active:scale-[1.1] transition-all duration-300"
                 />
 
                 {/*  <div class="flex flex-row space-x-4 lg:space-x-8 items-center">
-                  <ImgNextArrow class="h-6 lg:h-8 rotate-180" />
-                  <ImgNextArrow class="h-6 lg:h-8" />
+                  <ImgNextArrow alt="" class="h-6 lg:h-8 rotate-180" />
+                  <ImgNextArrow alt="" class="h-6 lg:h-8" />
                 </div> */}
               </div>
             </div>
