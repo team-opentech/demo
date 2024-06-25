@@ -14,7 +14,7 @@ import { inlineTranslate } from "qwik-speak";
 export const RouterHead = component$(() => {
   const t = inlineTranslate();
   const head = useDocumentHead();
-  console.log(head)
+  // console.log(head)
   const loc = useLocation();
 
   return (
@@ -59,9 +59,9 @@ export const RouterHead = component$(() => {
         <link key={item} {...l} />
       ))}
 
-      {/* {head.styles.map((s, item) => (
+      {head.styles.map((s, item) => (
         <style key={item} {...s.props} dangerouslySetInnerHTML={s.style} />
-      ))} */}
+      ))}
       <script
         src="https://calendar.google.com/calendar/scheduling-button-script.js"
         defer
@@ -110,9 +110,9 @@ export const RouterHead = component$(() => {
           `}
       </script>
 
-      {/* {head.scripts.map((s) => (
+      {head.scripts.map((s) => (
         <script key={s.key} {...s.props} dangerouslySetInnerHTML={s.script} />
-      ))} */}
+      ))}
     </>
   );
 });
