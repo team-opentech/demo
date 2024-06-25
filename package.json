@@ -27,9 +27,11 @@
     "qwik": "qwik"
   },
   "devDependencies": {
+    "@builder.io/dev-tools": "^1.0.17",
     "@builder.io/qwik": "^1.5.7",
     "@builder.io/qwik-city": "^1.5.7",
     "@builder.io/qwik-react": "0.5.0",
+    "@builder.io/sdk-qwik": "^0.14.26",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/material": "^5.15.20",
@@ -56,9 +58,9 @@
     "scrollreveal": "^4.0.9",
     "tailwindcss": "^3.4.4",
     "typescript": "5.4.5",
+    "undici": "*",
     "vite": "^5.3.1",
     "vite-tsconfig-paths": "4.2.1",
-    "undici": "*",
     "wrangler": "^3.61.0"
   },
   "dependencies": {

@@ -5,7 +5,6 @@
 // import { rewriteRoutes } from "./src/speak-routes";
 // import { qwikSpeakInline } from "qwik-speak/inline";
 // import { qwikReact } from "@builder.io/qwik-react/vite";
-
 // export default defineConfig({
 //   ssr: { target: "webworker" },
 //   plugins: [
@@ -20,7 +19,6 @@
 //     qwikReact(),
 //   ],
 // });
-
 /*
  * This is the base config for vite.
  * When building, the adapter config is used which loads this file and extends it.
@@ -31,7 +29,9 @@ import { qwikCity } from "@builder.io/qwik-city/vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import pkg from "./package.json";
 import { qwikSpeakInline } from "qwik-speak/inline";
+import { builderDevTools } from "@builder.io/dev-tools/vite";
 import { qwikReact } from "@builder.io/qwik-react/vite";
+
 // import { builderDevTools } from "@builder.io/dev-tools/vite";
 type PkgDep = Record<string, string>;
 const { dependencies = {}, devDependencies = {} } = pkg as any as {
@@ -40,10 +40,10 @@ const { dependencies = {}, devDependencies = {} } = pkg as any as {
   [key: string]: unknown;
 };
 errorOnDuplicatesPkgDeps(devDependencies, dependencies);
+
 /**
  * Note that Vite normally starts from `index.html` but the qwikCity plugin makes start at `src/entry.ssr.tsx` instead.
  */
-
 export default defineConfig(({ command, mode }): UserConfig => {
   return {
     plugins: [
@@ -56,6 +56,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
         assetsPath: "i18n",
       }),
       qwikReact(),
+      builderDevTools(),
     ],
     // This tells Vite which dependencies to pre-build in dev mode.
     optimizeDeps: {
@@ -63,6 +64,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
       // For example ['better-sqlite3'] if you use that in server functions.
       exclude: [],
     },
+
     /**
      * This is an advanced setting. It improves the bundling of your server code. To use it, make sure you understand when your consumed packages are dependencies or dev depencies. (otherwise things will break in production)
      */
@@ -94,6 +96,7 @@ export default defineConfig(({ command, mode }): UserConfig => {
   };
 });
 // *** utils ***
+
 /**
  * Function to identify duplicate dependencies and throw an error
  * @param {Object} devDependencies - List of development dependencies
