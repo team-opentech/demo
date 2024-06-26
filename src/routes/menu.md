@@ -8,9 +8,9 @@
 
 - [Servicios](/servicios/)
 
-## Casos de estudio
+## Portafolio
 
-- [Casos de estudio](/case-studies/)
+- [Portafolio](/portfolio/)
 
 ## Blog
 

@@ -21,7 +21,7 @@ export default component$(() => {
     blogPath,
     caseStudiesPath,
     contactPath,
-  ] = getPath(["/", "/services/", "/blog/", "/case-studies/", "/contact/"]);
+  ] = getPath(["/", "/services/", "/blog/", "/portfolio/", "/contact/"]);
 
   const menu = [
     {
@@ -37,7 +37,7 @@ export default component$(() => {
       href: blogPath,
     },
     {
-      text: `${t("header.case-studiesText@@Casos de Estudio")}`,
+      text: `${t("header.portfolioText@@Portfolio")}`,
       href: caseStudiesPath,
     },
     {
@@ -114,9 +114,9 @@ export default component$(() => {
               </a>
               <a
                 class="font-semibold text-black active:scale-90 transition-transform duration-200 ease-in-out"
-                href="/case-studies"
+                href="/portfolio"
               >
-                {t("footer.case-studiesText@@Caso de estudios")}
+                {t("footer.portfolioText@@Caso de estudios")}
               </a>
               <a
                 class="font-semibold text-black active:scale-90 transition-transform duration-200 ease-in-out"

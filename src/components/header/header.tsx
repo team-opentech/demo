@@ -29,8 +29,8 @@ export default component$(() => {
 
   const getPath = translatePath();
 
-  const [homePath, servicesPath, blogPath, caseStudiesPath, contactPath] =
-    getPath(["/", "/services/", "/blog/", "/case-studies/", "/contact/"]);
+  const [homePath, servicesPath, blogPath, portfolioPath, contactPath] =
+    getPath(["/", "/services/", "/blog/", "/portfolio/", "/contact/"]);
 
   const menu = [
     {
@@ -46,8 +46,8 @@ export default component$(() => {
       href: blogPath,
     },
     {
-      text: `${t("header.case-studiesText@@Case Studies")}`,
-      href: caseStudiesPath,
+      text: `${t("header.portfolioText@@Portfolio")}`,
+      href: portfolioPath,
     },
     {
       text: `${t("header.contactText@@Contact")}`,

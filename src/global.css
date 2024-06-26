@@ -155,3 +155,9 @@ a.mindblow:hover {
 .testimonials-container .control-pagination .swiper-pagination-bullet-active {
   background-color: black;
 }
+
+.portafolio-container .control-pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}

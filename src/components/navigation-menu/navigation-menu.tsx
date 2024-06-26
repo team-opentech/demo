@@ -29,10 +29,10 @@ export default component$(() => {
       //   text: "Casos de estudio",
       //   items: [{ text: "Casos de estudio", href: "/case-studies/" }],
       // },
-      // {
-      //   text: "Portafolio",
-      //   items: [{ text: "Portafolio", href: "/portfolio/" }],
-      // },
+      {
+        text: "Portfolio",
+        items: [{ text: "Portfolio", href: "/portfolio/" }],
+      },
       // {
       //   text: "Blog",
       //   items: [{ text: "Blog", href: "/blog/" }],

@@ -24,7 +24,7 @@ import { BlogContext } from "~/context";
 import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import { inlineTranslate } from "qwik-speak";
 
-export const BUILDER_PUBLIC_API_KEY = "7b1221f52afb4451b0f7b41c9b94d1a8";
+export const BUILDER_PUBLIC_API_KEY = import.meta.env.PUBLIC_BUILDER_API_KEY;
 export const BUILDER_MODEL = "blog-page";
 
 // export const client = new ApolloClient({
