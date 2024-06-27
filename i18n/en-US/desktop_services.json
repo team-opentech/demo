@@ -1,0 +1,17 @@
+{
+  "desktop_services": {
+    "button": "View More",
+    "service1-circle": "Creative <br />& Brand Experience",
+    "service1-paragraph": "Our approach is goal-oriented, ensuring your brand is both visually compelling and strategically aligned with market demands.",
+    "service1-title": "Creative <br />& Brand Experience",
+    "service2-circle": "Technology <br />& Data",
+    "service2-paragraph": "Beyond merely creating digital platforms, we position them intelligently and analyze performance metrics to improve your business operations.",
+    "service2-title": "Technology <br />& Data",
+    "service3-circle": "Digital<br />Marketing",
+    "service3-paragraph": "Focused on smart strategy, we design campaigns that connect with the right audience and foster authentic relationships.",
+    "service3-title": "Digital<br /> Marketing",
+    "service4-circle": "Consulting<br /> & Sales",
+    "service4-paragraph": "We leverage our expertise to offer actionable insights for improving both your digital reach and revenue outcomes.",
+    "service4-title": "Consulting<br /> & Sales"
+  }
+}

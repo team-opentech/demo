@@ -1,0 +1,17 @@
+{
+  "desktop_services": {
+    "button": "Ver más",
+    "service1-circle": "Creative<br /> & Brand Experience",
+    "service1-paragraph": "Nuestro enfoque está orientado a objetivos, asegurando que tu marca sea visualmente impactante y estratégicamente alineada con las demandas del mercado.",
+    "service1-title": "Creative<br /> & Brand Experience",
+    "service2-circle": "Technology<br /> & Data",
+    "service2-paragraph": "Más allá de crear plataformas digitales, las posicionamos inteligentemente y analizamos métricas para mejorar tus operaciones de negocio. ",
+    "service2-title": "Technology<br /> & Data",
+    "service3-circle": "Digital<br /> Marketing",
+    "service3-paragraph": "Centrados en una estrategia inteligente, diseñamos campañas que conectan con la audiencia adecuada y fomentan relaciones auténticas.",
+    "service3-title": "Digital<br /> Marketing",
+    "service4-circle": "Consulting<br /> & Sales",
+    "service4-paragraph": "Aprovechamos nuestra experiencia para ofrecer perspectivas prácticas que mejoren tanto tu alcance digital como los resultados de ingresos. ",
+    "service4-title": "Consulting<br /> & Sales"
+  }
+}

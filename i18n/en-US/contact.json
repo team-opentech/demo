@@ -1,0 +1,24 @@
+{
+  "contact": {
+    "footer": "Don't leave <br /> for tomorrow <br class='lg:hidden' /> what you can <br class='lg:hidden' /> start today.",
+    "form_additional": "Additional",
+    "form_budget": "Budget",
+    "form_company": "Company",
+    "form_content": "Let's initiate your strategy now!",
+    "form_content1": "Let's initiate your strategy",
+    "form_content2": "now!",
+    "form_email": "Email",
+    "form_location": "Location",
+    "form_message": "Message",
+    "form_name": "Name",
+    "form_phone": "Phone",
+    "form_service": "Service",
+    "form_emailerror": "*Please enter a valid email address.",
+    "paragraph1": "Connect with us to schedule your latest consultation",
+    "paragraph2": "and always stay informed about Opentech's advancements.",
+    "promtion_emails": "I agree to receive promotional emails.",
+    "title1": "Begin Your",
+    "title2": "Digital Journey Today",
+    "title3": "No Need To Delay"
+  }
+}

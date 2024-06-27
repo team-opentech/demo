@@ -1,0 +1,15 @@
+{
+  "header": {
+    "Home": "Home",
+    "HomeText": "Home",
+    "blog": "Blog",
+    "blogText": "Blog",
+    "case-studies": "Case Studies",
+    "case-studiesText": "Case Studies",
+    "contact": "Contact",
+    "contactText": "Contact",
+    "menu": "Menu",
+    "services": "Services",
+    "servicesText": "Services"
+  }
+}

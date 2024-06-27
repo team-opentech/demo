@@ -1,0 +1,15 @@
+{
+  "footer": {
+    "Blog": "Blog",
+    "Case-studies": "Casos de Estudio",
+    "Contact": "Contacto",
+    "Home": "Home",
+    "Services": "Servicios",
+    "blogText": "Blog",
+    "case-studiesText": "Casos de Estudio",
+    "contactText": "Contacto",
+    "homeText": "Home",
+    "servicesText": "Servicios",
+    "WhatsAppBtn": "Escribenos por Whatsapp"
+  }
+}

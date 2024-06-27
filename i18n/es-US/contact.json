@@ -1,0 +1,24 @@
+{
+  "contact": {
+    "footer": "No dejes para mañana <br /> el crecimiento <br class='lg:hidden' /> que puedes <br class='lg:hidden' /> empezar hoy.",
+    "form_additional": "Adicional",
+    "form_budget": "Presupuesto",
+    "form_company": "Empresa",
+    "form_content": "¡Inicia tu estrategia ahora mismo!",
+    "form_content1": "¡Inicia tu estrategia",
+    "form_content2": "ahora mismo!",
+    "form_email": "Email",
+    "form_location": "Locación",
+    "form_message": "Mensaje",
+    "form_name": "Nombre",
+    "form_phone": "Teléfono",
+    "form_service": "Servicio",
+    "form_emailerror": "*Ingrese un correo electrónico válido.",
+    "paragraph1": "Conéctate con nosotros para programar tu asesoría actualizada",
+    "paragraph2": "y no te pierdas ninguna novedad de Opentech.",
+    "promtion_emails": "Acepto recibir correos electrónicos promocionales.",
+    "title1": "Comienza Tu",
+    "title2": "Evolución Digital Hoy",
+    "title3": "¿Por Qué Esperar?"
+  }
+}

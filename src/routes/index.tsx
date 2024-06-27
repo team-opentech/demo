@@ -1,11 +1,9 @@
 // Esta es la vista Home
 import {
   component$,
-  // useResource$,
-  useStore,
   useStylesScoped$,
   // useTask$,
-  useVisibleTask$,
+  useVisibleTask$
 } from "@builder.io/qwik";
 import { inlineTranslate } from "qwik-speak";
 // import { isServer, isBrowser } from "@builder.io/qwik/build";
@@ -19,11 +17,11 @@ import {
   Testimonio,
 } from "~/integrations/react/testimonials";
 // import CaseStudies from "~/components/case-studies-home/case-studies";
-import {PortfolioSwiper} from "~/integrations/react/portafolio-swiper"
+import { PortfolioSwiper } from "~/integrations/react/portafolio-swiper";
 import ImgBannerPrincipal from "../assets/img/banner-principal.webp?jsx";
 import ImgMobileHomeBanner from "../assets/img/mobile-home-banner.webp?jsx";
-import Marquee from "../components/marquee/marquee-home";
 import ImgOtArrow from "../assets/svg/ot-arrow.svg?jsx";
+import Marquee from "../components/marquee/marquee-home";
 import styles from "./index.css?inline";
 // import * as libreria from "@builder.io/qwik-city";
 import ScrollReveal from "scrollreveal";
