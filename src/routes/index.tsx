@@ -357,7 +357,7 @@ export default component$(() => {
         {/* Desktop version */}
         <div
           id="somos-opentech-text"
-          class="pt-20 hidden max-w-[1290px] mx-auto lg:flex flex-row "
+          class="pt-20 hidden max-w-[1290px] mx-auto lg:flex flex-row lg:pb-[68px]"
         >
           <div class="text-ot-white w-4/6">
             <div class="flex flex-row text-xs items-center">
