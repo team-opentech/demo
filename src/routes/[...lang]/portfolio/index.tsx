@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
-import OpentechButton from "../../components/ot-button/ot-button";
+import { DocumentHead, routeLoader$, useNavigate } from "@builder.io/qwik-city";
 import { inlineTranslate } from "qwik-speak";
-import { DocumentHead, useNavigate, routeLoader$ } from "@builder.io/qwik-city";
+import OpentechButton from "~/components/ot-button/ot-button";
 
 export const BUILDER_PUBLIC_API_KEY = import.meta.env.PUBLIC_BUILDER_API_KEY;
 export const BUILDER_MODEL = "portfolio";

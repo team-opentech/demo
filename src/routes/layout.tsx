@@ -1,22 +1,27 @@
 import {
-  component$,
-  useStylesScoped$,
   Slot,
+  component$,
   useStore,
+  useStylesScoped$,
   useVisibleTask$,
 } from "@builder.io/qwik";
+import { RequestHandler } from "@builder.io/qwik-city";
+import { inlineTranslate, localizePath } from "qwik-speak";
 import Footer from "~/components/footer/footer";
 import Header from "~/components/header/header";
-import { RequestHandler } from "@builder.io/qwik-city";
-import styles from "./layout.css?inline";
-import { inlineTranslate } from "qwik-speak";
 import { PaginationProvider } from "~/context";
+import styles from "./layout.css?inline";
 
-export const onGet: RequestHandler = async ({ cacheControl }) => {
+export const onGet: RequestHandler = async ({ locale, cacheControl, redirect }) => {
   cacheControl({
     staleWhileRevalidate: 60 * 60 * 24 * 7,
     maxAge: 30,
   });
+  
+  if (!locale()) {
+    const getPath = localizePath();
+    throw redirect(302, getPath('/', 'es-US')); // Let the server know the language to use
+  }
 };
 
 export default component$(() => {

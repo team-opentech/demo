@@ -3,13 +3,13 @@ import {
   useStylesScoped$,
   useVisibleTask$,
 } from "@builder.io/qwik";
-import styles from "./servicios.css?inline"; // Archivo .css correspondiente del componente
-import OpentechButton from "~/components/ot-button/ot-button";
-import ExpandableService from "~/components/expandable-services/expandable-services";
-import ImgServiceMain from "../../assets/img/service-main.webp?jsx";
+import { DocumentHead } from "@builder.io/qwik-city";
 import { inlineTranslate } from "qwik-speak";
 import ScrollReveal from "scrollreveal";
-import { DocumentHead } from "@builder.io/qwik-city";
+import ExpandableService from "~/components/expandable-services/expandable-services";
+import OpentechButton from "~/components/ot-button/ot-button";
+import ImgServiceMain from "../../../assets/img/service-main.webp?jsx";
+import styles from "./servicios.css?inline"; // Archivo .css correspondiente del componente
 
 export default component$(() => {
   useStylesScoped$(styles);

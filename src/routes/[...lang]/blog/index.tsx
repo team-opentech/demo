@@ -1,22 +1,22 @@
 import {
   component$,
+  useContext,
+  useStore,
   // Resource,
   // useResource$,
   useStylesScoped$,
-  useContext,
   useTask$,
   useVisibleTask$,
-  useStore,
 } from "@builder.io/qwik";
-import styles from "./blog.css?inline"; // Archivo .css correspondiente del componente
 import BlogpostThumbnail from "~/components/blogpost-thumbnail/blogpost-thumbnail";
+import styles from "./blog.css?inline"; // Archivo .css correspondiente del componente
 // import BlogLoadingTemplate from "~/components/blog-loading-template";
 // import axios from "axios";
 // import ImgDropdownIcon from "../../assets/svg/dropdown-icon.svg?jsx";
-import ImgSearchIcon from "../../assets/svg/search-icon.svg?jsx";
 import Pagination from "~/components/blog-pagination/pagination";
-import { BlogInterface } from "~/interfaces";
 import { BlogContext } from "~/context";
+import { BlogInterface } from "~/interfaces";
+import ImgSearchIcon from "../../../assets/svg/search-icon.svg?jsx";
 // import ScrollReveal from "scrollreveal";
 // import { ApolloClient, InMemoryCache } from "@apollo/client";
 // import { baseUrl } from "~/api/constants";

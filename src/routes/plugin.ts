@@ -1,15 +1,25 @@
-import type { RequestHandler } from "@builder.io/qwik-city";
+import type { RequestHandler } from '@builder.io/qwik-city';
+import { validateLocale } from 'qwik-speak';
 
-import { config } from "../speak-config";
-import { rewriteRoutes } from "../speak-routes";
+import { config } from '../speak-config';
 
-export const onRequest: RequestHandler = ({ url, locale }) => {
-  const parts = url.pathname.split("/");
-  const prefix = url.pathname.startsWith("/") ? parts[1] : parts[0];
+/**
+ * This middleware function must only contain the logic to set the locale,
+ * because it is invoked on every request to the server.
+ * Avoid redirecting or throwing errors here, and prefer layouts or pages
+ */
+export const onRequest: RequestHandler = ({ params, locale }) => {
+  let lang: string | undefined = undefined;
 
-  const lang = rewriteRoutes.find((rewrite) => rewrite.prefix === prefix)
-    ?.prefix;
+  if (params.lang && validateLocale(params.lang)) {
+    // Check supported locales
+    lang = config.supportedLocales.find(value => value.lang === params.lang)?.lang;
+  } else {
+    lang = config.defaultLocale.lang;
+  }
+  console.log(lang)
+  
 
   // Set Qwik locale
-  locale(lang || config.defaultLocale.lang);
+  locale(lang);
 };

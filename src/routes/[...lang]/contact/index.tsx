@@ -1,16 +1,13 @@
 import {
+  $,
   component$,
   useStore,
-  useStylesScoped$,
-  useVisibleTask$,
-  $,
+  useStylesScoped$
 } from "@builder.io/qwik";
-import AnimatedQuote from "~/components/animated-quote/animated-quote";
-import styles from "./contacto.css?inline";
 import { DocumentHead, server$, useNavigate } from "@builder.io/qwik-city";
 import { inlineTranslate } from "qwik-speak";
-import TripleMarquee from "../../components/marquee/triple-marquee";
-import ScrollReveal from "scrollreveal";
+import TripleMarquee from "~/components/marquee/triple-marquee";
+import styles from "./contacto.css?inline";
 
 //Vista de Contacto
 
