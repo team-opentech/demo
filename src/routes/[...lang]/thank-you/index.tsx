@@ -1,8 +1,8 @@
 /* eslint-disable qwik/jsx-img */
 import { component$ } from "@builder.io/qwik";
-import check from "../../assets/svg/check-th.svg";
-import circle from "../../assets/svg/circle.svg";
-import { thankYou } from "../../data/constants";
+import check from "../../../assets/svg/check-th.svg";
+import circle from "../../../assets/svg/circle.svg";
+import { thankYou } from "../../../data/constants";
 
 export default component$(() => {
   return (
