@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { RegisteredComponent } from "@builder.io/sdk-qwik";
+import { ColorPalette } from "../ColorPalette/ColorPalette";
 
 interface GalleryProps {
   gallery: Image[];
@@ -10,45 +11,45 @@ interface Image {
 
 export const Gallery = component$(({ gallery }: GalleryProps) => {
   return (
-    <section class="pt-[47px] pb-[69px] px-[23px] max-w-[600px] w-full mx-auto lg:pt-[216px] lg:pb-[166px] lg:max-w-[1920px] lg:px-[18%] min-[1920px]:px-[237px]">
+    <section class="mx-auto w-full max-w-[600px] px-[23px] pb-[69px] pt-[47px] lg:max-w-[1920px] lg:px-[18%] lg:pb-[166px] lg:pt-[216px] min-[1920px]:px-[237px]">
       {gallery && (
         <div class="relative w-full">
-          <div class="w-full h-full absolute z-0 flex items-center top-0 left-0 lg:hidden">
-            <div class="grid grid-cols-2 w-full gap-[34.5%]">
-              <div class="h-full flex justify-center">
+          <div class="absolute left-0 top-0 z-0 flex h-full w-full items-center lg:hidden">
+            <div class="grid w-full grid-cols-2 gap-[34.5%]">
+              <div class="flex h-full justify-center">
                 {gallery[0] && (
                   <img
                     src={gallery[0].image}
                     alt="Image 1"
                     width={697}
                     height={764}
-                    class="w-full h-auto aspect-[108 / 118] object-cover"
+                    class="aspect-[108 / 118] h-auto w-full object-cover"
                   />
                 )}
               </div>
-              <div class="h-full flex justify-center">
+              <div class="flex h-full justify-center">
                 {gallery[1] && (
                   <img
                     src={gallery[1].image}
                     alt="Image 1"
                     width={697}
                     height={764}
-                    class="w-full h-auto aspect-[108/118] object-cover"
+                    class="aspect-[108/118] h-auto w-full object-cover"
                   />
                 )}
               </div>
             </div>
           </div>
-          <div class="w-full aspect-[330/193] h-auto flex justify-center relative z-10 lg:hidden">
+          <div class="relative z-10 flex aspect-[330/193] h-auto w-full justify-center lg:hidden">
             <img
               src={gallery[2].image}
               alt="Image 1"
               width={697}
               height={764}
-              class="w-auto h-full aspect-[176 / 193] object-cover"
+              class="aspect-[176 / 193] h-full w-auto object-cover"
             />
           </div>
-          <div class="hidden lg:grid grid-cols-2 grid-rows-2 gap-x-[65px] gap-y-[74px]">
+          <div class="hidden grid-cols-2 grid-rows-2 gap-x-[65px] gap-y-[74px] lg:grid">
             {gallery.map((e, index) => {
               return (
                 <img
@@ -56,7 +57,7 @@ export const Gallery = component$(({ gallery }: GalleryProps) => {
                   alt="Image 1"
                   width={697}
                   height={764}
-                  class="w-full h-auto aspect-[697 / 764] object-cover"
+                  class="aspect-[697 / 764] h-auto w-full object-cover"
                   key={`Image-${index}`}
                 />
               );
@@ -89,6 +90,50 @@ export const customComponents: RegisteredComponent[] = [
         defaultValue: [],
         required: true,
         helperText: "Add images to the gallery",
+      },
+    ],
+  },
+  {
+    component: ColorPalette,
+    name: "ColorPalette",
+    inputs: [
+      {
+        name: "palette",
+        type: "object",
+        subFields: [
+          {
+            name: "colors",
+            type: "list",
+            subFields: [
+              {
+                name: "name",
+                type: "string",
+                defaultValue: "",
+                required: true,
+                helperText: "El nombre del color",
+              },
+              {
+                name: "color",
+                type: "color",
+                defaultValue: "#000000",
+                required: true,
+                helperText: "El valor hexadecimal del color",
+              },
+              {
+                name: "border",
+                type: "boolean",
+                defaultValue: false,
+                helperText: "Indica si el color tiene borde",
+              },
+              {
+                name: "text",
+                type: "boolean",
+                defaultValue: false,
+                helperText: "Indica si el color es para texto",
+              },
+            ],
+          },
+        ],
       },
     ],
   },

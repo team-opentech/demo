@@ -12,15 +12,19 @@ import Header from "~/components/header/header";
 import { PaginationProvider } from "~/context";
 import styles from "./layout.css?inline";
 
-export const onGet: RequestHandler = async ({ locale, cacheControl, redirect }) => {
+export const onGet: RequestHandler = async ({
+  locale,
+  cacheControl,
+  redirect,
+}) => {
   cacheControl({
     staleWhileRevalidate: 60 * 60 * 24 * 7,
     maxAge: 30,
   });
-  
+
   if (!locale()) {
     const getPath = localizePath();
-    throw redirect(302, getPath('/', 'es-US')); // Let the server know the language to use
+    throw redirect(302, getPath("/", "es-US")); // Let the server know the language to use
   }
 };
 
@@ -29,7 +33,7 @@ export default component$(() => {
   const state = useStore({ isToggled: false });
   const { isToggled } = state;
   const t = inlineTranslate();
-// eslint-disable-next-line qwik/no-use-visible-task
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     const navigationEntries = performance.getEntriesByType("navigation");
     if (navigationEntries.length > 0) {
@@ -47,7 +51,7 @@ export default component$(() => {
     <PaginationProvider>
       <main>
         <Header />
-        <div id="layout" class="mt-[124px] lg:mt-[150px] opacity-0">
+        <div id="layout" class="mt-[124px] opacity-0 lg:mt-[150px]">
           <Slot />
         </div>
         <Footer />

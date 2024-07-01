@@ -1,7 +1,7 @@
-import type { RequestHandler } from '@builder.io/qwik-city';
-import { validateLocale } from 'qwik-speak';
+import type { RequestHandler } from "@builder.io/qwik-city";
+import { validateLocale } from "qwik-speak";
 
-import { config } from '../speak-config';
+import { config } from "../speak-config";
 
 /**
  * This middleware function must only contain the logic to set the locale,
@@ -13,13 +13,11 @@ export const onRequest: RequestHandler = ({ params, locale }) => {
 
   if (params.lang && validateLocale(params.lang)) {
     // Check supported locales
-    lang = config.supportedLocales.find(value => value.lang === params.lang)?.lang;
+    lang = config.supportedLocales.find((value) => value.lang === params.lang)
+      ?.lang;
   } else {
     lang = config.defaultLocale.lang;
   }
-  console.log(lang)
-  
-
   // Set Qwik locale
   locale(lang);
 };
