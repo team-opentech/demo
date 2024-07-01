@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { DocumentHead, routeLoader$, useNavigate } from "@builder.io/qwik-city";
 import { inlineTranslate } from "qwik-speak";
+import { ColorPalette, Palette } from "~/components/ColorPalette/ColorPalette";
 import OpentechButton from "~/components/ot-button/ot-button";
 
 export const BUILDER_PUBLIC_API_KEY = import.meta.env.PUBLIC_BUILDER_API_KEY;
@@ -8,19 +9,19 @@ export const BUILDER_MODEL = "portfolio";
 
 export const useQuery = routeLoader$(async () => {
   const { results } = await fetch(
-    `https://cdn.builder.io/api/v3/content/${BUILDER_MODEL}?apiKey=${BUILDER_PUBLIC_API_KEY}&limit=0`
+    `https://cdn.builder.io/api/v3/content/${BUILDER_MODEL}?apiKey=${BUILDER_PUBLIC_API_KEY}&limit=0`,
   ).then((res) => res.json());
   const data = results;
   console.log("Results: ", data);
   const portfolios = data.map((elem: any) => ({
-    title: elem.data.title['Default'],
+    title: elem.data.title["Default"],
     description: elem.data.description,
     featuredImage: elem.data.featuredImage,
     link: elem.data.url,
     tags: elem.data?.tags,
   }));
 
-  console.log("Portfolio: ", portfolios)
+  console.log("Portfolio: ", portfolios);
 
   return portfolios;
 });
@@ -44,86 +45,118 @@ export default component$(() => {
   // ];
   const portfolios = useQuery().value;
 
+  const palette: Palette = {
+    colors: [
+      {
+        name: "Gold",
+        color: "#FFD423",
+      },
+      {
+        name: "White smoke",
+        color: "#F3F3F3",
+      },
+      {
+        name: "White",
+        color: "#FFFFFF",
+        border: true,
+      },
+      {
+        name: "Black",
+        color: "#000000",
+        text: true,
+      },
+    ],
+  };
+
   return (
-    <section class="flex flex-col justify-center lg:max-w-[80%] xl:max-w-[1300px] mx-auto">
-      <h1 class="flex text-[29px] font-bold mb-8 mx-auto lg:mx-0 text-center lg:text-left">
-        Nuestro Portafolio
-      </h1>
-      <div class="lg:bg-ot-light-gray lg:rounded-2xl">
-        {portfolios.map((item:any, index:number) => (
-          <div
-            key={index}
-            class="bg-ot-light-gray px-8 pt-2 md:rounded-xl lg:mx-8 md:mx-20 lg:flex lg:flex-row lg:py-5 lg:px-16 xl:px-0"
-          >
-            <div class="px-2 lg:w-2/4 xl:self-center">
-              <section class="pt-4">
-                <a
-                  href={item.link}
-                  class="block text-xl lg:text-3xl font-bold tracking-tighter cursor-pointer"
-                >
-                  {item.title}
-                </a>
-                <p class="lg:text-2xl">{item.subtitle}</p>
-              </section>
-              <section class="flex flex-row py-0 flex-wrap">
-                {item.tags.map((tag:string, index:number) => (
-                  <p
-                    key={index}
-                    class={`text-center text-2xs lg:text-xs border-2 rounded-full px-1 mr-2 mb-2`}
+    <>
+      <section class="mx-auto flex flex-col justify-center lg:max-w-[80%] xl:max-w-[1300px]">
+        <h1 class="mx-auto mb-8 flex text-center text-[29px] font-bold lg:mx-0 lg:text-left">
+          Nuestro Portafolio
+        </h1>
+        <div class="lg:rounded-2xl lg:bg-ot-light-gray">
+          {portfolios.map((item: any, index: number) => (
+            <div
+              key={index}
+              class="bg-ot-light-gray px-8 pt-2 md:mx-20 md:rounded-xl lg:mx-8 lg:flex lg:flex-row lg:px-16 lg:py-5 xl:px-0"
+            >
+              <div class="px-2 lg:w-2/4 xl:self-center">
+                <section class="pt-4">
+                  <a
+                    href={item.link}
+                    class="block cursor-pointer text-xl font-bold tracking-tighter lg:text-3xl"
                   >
-                    {tag}
+                    {item.title}
+                  </a>
+                  <p class="lg:text-2xl">{item.subtitle}</p>
+                </section>
+                <section class="flex flex-row flex-wrap py-0">
+                  {item.tags.map((tag: string, index: number) => (
+                    <p
+                      key={index}
+                      class={`mb-2 mr-2 rounded-full border-2 px-1 text-center text-2xs lg:text-xs`}
+                    >
+                      {tag}
+                    </p>
+                  ))}
+                </section>
+                <section class="py-0">
+                  <p class="txt-3xs my-4 font-normal tracking-tighter">
+                    {item.parragraph}
                   </p>
-                ))}
-              </section>
-              <section class="py-0">
-                <p class="txt-3xs tracking-tighter font-normal my-4">
-                  {item.parragraph}
-                </p>
-              </section>
-              <div class="mb-8 w-full flex justify-center lg:justify-start">
-                <OpentechButton
-                  title={"Ver proyecto"}
-                  paddingX={"px-8"}
-                  link={item.link}
-                  classes="hover:scale-[1.1] active:scale-[1.1] transition-all duration-300 cursor-pointer"
-                />
+                </section>
+                <div class="mb-8 flex w-full justify-center lg:justify-start">
+                  <OpentechButton
+                    title={"Ver proyecto"}
+                    paddingX={"px-8"}
+                    link={item.link}
+                    classes="hover:scale-[1.1] active:scale-[1.1] transition-all duration-300 cursor-pointer"
+                  />
+                </div>
+              </div>
+              <div class="flex items-center justify-center pb-8 lg:w-3/4">
+                <a href={item.link}>
+                  <img
+                    src={item.featuredImage}
+                    width={" "}
+                    height={" "}
+                    class="-ml-6 w-[85%] cursor-pointer rounded-b-xl lg:ml-0 lg:mt-8 lg:rounded-xl"
+                  />
+                </a>
               </div>
             </div>
-            <div class="lg:w-3/4 flex justify-center items-center pb-8">
-              <a href={item.link}>
-                <img
-                  src={item.featuredImage}
-                  width={" "}
-                  height={" "}
-                  class="w-[85%] -ml-6 rounded-b-xl lg:rounded-xl lg:ml-0 lg:mt-8 cursor-pointer"
-                />
-              </a>
-            </div>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
+      <div class="my-[200px]">
+        <ColorPalette palette={palette} />
       </div>
-    </section>
+    </>
   );
 });
 
-export const head: DocumentHead = ({resolveValue, params}) => {
+export const head: DocumentHead = ({ resolveValue, params }) => {
   const t = inlineTranslate();
-  const title = t("case_studies.metaTitle@@Opentech Transforma Negocios - Descubre Cómo");
+  const title = t(
+    "case_studies.metaTitle@@Opentech Transforma Negocios - Descubre Cómo",
+  );
   return {
     title: title,
     meta: [
       {
-        name: 'description',
-        content: t("case_studies.metaDescription@@Descubre cómo Opentech ha impulsado el éxito de clientes mediante soluciones de desarrollo web. Sumérgete en estos proyectos notorios."),
+        name: "description",
+        content: t(
+          "case_studies.metaDescription@@Descubre cómo Opentech ha impulsado el éxito de clientes mediante soluciones de desarrollo web. Sumérgete en estos proyectos notorios.",
+        ),
       },
       {
         property: "og:title",
-        content: title
+        content: title,
       },
       {
         property: "og:image",
-        content: `https://${import.meta.env.PUBLIC_DOMAIN}/OT-OG.jpg`
-      }
+        content: `https://${import.meta.env.PUBLIC_DOMAIN}/OT-OG.jpg`,
+      },
     ],
     links: [
       {
