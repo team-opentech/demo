@@ -51,7 +51,7 @@ export default component$(() => {
     <PaginationProvider>
       <main>
         <Header />
-        <div id="layout" class="mt-[124px] opacity-100 lg:mt-[150px]">
+        <div id="layout" class="mt-[124px] opacity-0 lg:mt-[150px]">
           <Slot />
         </div>
         <Footer />

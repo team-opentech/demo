@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { DocumentHead, routeLoader$, useNavigate } from "@builder.io/qwik-city";
 import { inlineTranslate } from "qwik-speak";
-import { ColorPalette, Palette } from "~/components/ColorPalette/ColorPalette";
 import OpentechButton from "~/components/ot-button/ot-button";
 
 export const BUILDER_PUBLIC_API_KEY = import.meta.env.PUBLIC_BUILDER_API_KEY;
@@ -45,93 +44,65 @@ export default component$(() => {
   // ];
   const portfolios = useQuery().value;
 
-  const palette: Palette = {
-    colors: [
-      {
-        name: "Gold",
-        color: "#FFD423",
-      },
-      {
-        name: "White smoke",
-        color: "#F3F3F3",
-      },
-      {
-        name: "White",
-        color: "#FFFFFF",
-        border: true,
-      },
-      {
-        name: "Black",
-        color: "#000000",
-        text: true,
-      },
-    ],
-  };
-
   return (
-    <>
-      <section class="mx-auto flex flex-col justify-center lg:max-w-[80%] xl:max-w-[1300px]">
-        <h1 class="mx-auto mb-8 flex text-center text-[29px] font-bold lg:mx-0 lg:text-left">
-          Nuestro Portafolio
-        </h1>
-        <div class="lg:rounded-2xl lg:bg-ot-light-gray">
-          {portfolios.map((item: any, index: number) => (
-            <div
-              key={index}
-              class="bg-ot-light-gray px-8 pt-2 md:mx-20 md:rounded-xl lg:mx-8 lg:flex lg:flex-row lg:px-16 lg:py-5 xl:px-0"
-            >
-              <div class="px-2 lg:w-2/4 xl:self-center">
-                <section class="pt-4">
-                  <a
-                    href={item.link}
-                    class="block cursor-pointer text-xl font-bold tracking-tighter lg:text-3xl"
-                  >
-                    {item.title}
-                  </a>
-                  <p class="lg:text-2xl">{item.subtitle}</p>
-                </section>
-                <section class="flex flex-row flex-wrap py-0">
-                  {item.tags.map((tag: string, index: number) => (
-                    <p
-                      key={index}
-                      class={`mb-2 mr-2 rounded-full border-2 px-1 text-center text-2xs lg:text-xs`}
-                    >
-                      {tag}
-                    </p>
-                  ))}
-                </section>
-                <section class="py-0">
-                  <p class="txt-3xs my-4 font-normal tracking-tighter">
-                    {item.parragraph}
-                  </p>
-                </section>
-                <div class="mb-8 flex w-full justify-center lg:justify-start">
-                  <OpentechButton
-                    title={"Ver proyecto"}
-                    paddingX={"px-8"}
-                    link={item.link}
-                    classes="hover:scale-[1.1] active:scale-[1.1] transition-all duration-300 cursor-pointer"
-                  />
-                </div>
-              </div>
-              <div class="flex items-center justify-center pb-8 lg:w-3/4">
-                <a href={item.link}>
-                  <img
-                    src={item.featuredImage}
-                    width={" "}
-                    height={" "}
-                    class="-ml-6 w-[85%] cursor-pointer rounded-b-xl lg:ml-0 lg:mt-8 lg:rounded-xl"
-                  />
+    <section class="mx-auto flex flex-col justify-center lg:max-w-[80%] xl:max-w-[1300px]">
+      <h1 class="mx-auto mb-8 flex text-center text-[29px] font-bold lg:mx-0 lg:text-left">
+        Nuestro Portafolio
+      </h1>
+      <div class="lg:rounded-2xl lg:bg-ot-light-gray">
+        {portfolios.map((item: any, index: number) => (
+          <div
+            key={index}
+            class="bg-ot-light-gray px-8 pt-2 md:mx-20 md:rounded-xl lg:mx-8 lg:flex lg:flex-row lg:px-16 lg:py-5 xl:px-0"
+          >
+            <div class="px-2 lg:w-2/4 xl:self-center">
+              <section class="pt-4">
+                <a
+                  href={item.link}
+                  class="block cursor-pointer text-xl font-bold tracking-tighter lg:text-3xl"
+                >
+                  {item.title}
                 </a>
+                <p class="lg:text-2xl">{item.subtitle}</p>
+              </section>
+              <section class="flex flex-row flex-wrap py-0">
+                {item.tags.map((tag: string, index: number) => (
+                  <p
+                    key={index}
+                    class={`mb-2 mr-2 rounded-full border-2 px-1 text-center text-2xs lg:text-xs`}
+                  >
+                    {tag}
+                  </p>
+                ))}
+              </section>
+              <section class="py-0">
+                <p class="txt-3xs my-4 font-normal tracking-tighter">
+                  {item.parragraph}
+                </p>
+              </section>
+              <div class="mb-8 flex w-full justify-center lg:justify-start">
+                <OpentechButton
+                  title={"Ver proyecto"}
+                  paddingX={"px-8"}
+                  link={item.link}
+                  classes="hover:scale-[1.1] active:scale-[1.1] transition-all duration-300 cursor-pointer"
+                />
               </div>
             </div>
-          ))}
-        </div>
-      </section>
-      <div class="my-[200px]">
-        <ColorPalette palette={palette} />
+            <div class="flex items-center justify-center pb-8 lg:w-3/4">
+              <a href={item.link}>
+                <img
+                  src={item.featuredImage}
+                  width={" "}
+                  height={" "}
+                  class="-ml-6 w-[85%] cursor-pointer rounded-b-xl lg:ml-0 lg:mt-8 lg:rounded-xl"
+                />
+              </a>
+            </div>
+          </div>
+        ))}
       </div>
-    </>
+    </section>
   );
 });
 
