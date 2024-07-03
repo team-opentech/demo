@@ -110,7 +110,7 @@ export const customComponents: RegisteredComponent[] = [
           },
           {
             name: "color",
-            type: "color",
+            type: "string", // Cambia esto a string para poder usar validación personalizada
             defaultValue: "#000000",
             required: true,
             helperText: "El valor hexadecimal del color",
