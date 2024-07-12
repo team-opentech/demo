@@ -98,40 +98,34 @@ export const customComponents: RegisteredComponent[] = [
     name: "ColorPalette",
     inputs: [
       {
-        name: "palette",
-        type: "object",
+        name: "colors",
+        type: "list",
         subFields: [
           {
-            name: "colors",
-            type: "list",
-            subFields: [
-              {
-                name: "name",
-                type: "string",
-                defaultValue: "",
-                required: true,
-                helperText: "El nombre del color",
-              },
-              {
-                name: "color",
-                type: "color",
-                defaultValue: "#000000",
-                required: true,
-                helperText: "El valor hexadecimal del color",
-              },
-              {
-                name: "border",
-                type: "boolean",
-                defaultValue: false,
-                helperText: "Indica si el color tiene borde",
-              },
-              {
-                name: "text",
-                type: "boolean",
-                defaultValue: false,
-                helperText: "Indica si el color es para texto",
-              },
-            ],
+            name: "name",
+            type: "string",
+            defaultValue: "",
+            required: true,
+            helperText: "El nombre del color",
+          },
+          {
+            name: "color",
+            type: "string", // Cambia esto a string para poder usar validación personalizada
+            defaultValue: "#000000",
+            required: true,
+            helperText: "El valor hexadecimal del color",
+          },
+          {
+            name: "border",
+            type: "boolean",
+            defaultValue: false,
+            helperText: "Indica si el color tiene borde",
+          },
+          {
+            name: "text",
+            type: "boolean",
+            defaultValue: false,
+            helperText: "Indica si el color es para texto",
           },
         ],
       },

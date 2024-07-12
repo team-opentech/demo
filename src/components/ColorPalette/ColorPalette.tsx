@@ -7,15 +7,11 @@ interface Color {
   text?: boolean;
 }
 
-export interface Palette {
+interface ColorPaletteProps {
   colors: Color[];
 }
 
-interface ColorPaletteProps {
-  palette: Palette;
-}
-
-export const ColorPalette = component$(({ palette }: ColorPaletteProps) => {
+export const ColorPalette = component$(({ colors }: ColorPaletteProps) => {
   function removeHashFromHex(hex: string) {
     if (hex.charAt(0) === "#") {
       return hex.slice(1);
@@ -28,7 +24,7 @@ export const ColorPalette = component$(({ palette }: ColorPaletteProps) => {
       class="mx-auto flex w-fit max-w-full gap-[27px] overflow-x-scroll px-[21px] lg:gap-[72px] lg:px-[66px]"
       style={{ msOverflowStyle: "none", scrollbarWidth: "none" }}
     >
-      {palette?.colors?.map((e) => {
+      {colors.map((e) => {
         return (
           <article
             key={`palette-${e.name}`}
