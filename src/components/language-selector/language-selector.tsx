@@ -40,8 +40,8 @@ export const LanguageSelector = component$((props: any) => {
           type="button"
           class={`inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-300 ${
             openedMenu
-              ? "bg-black text-white ring-0 ring-inset ring-gray-900 hover:bg-black delay-[0.2s] lg:delay-[0.4s]"
-              : "bg-white text-gray-900 ring-0 ring-inset ring-gray-300 hover:bg-gray-50 delay-[0.9s] lg:delay-[0.9s]"
+              ? "bg-transparent text-white ring-0 ring-inset ring-gray-900 hover:bg-black delay-[0.2s] lg:delay-[0.4s]"
+              : "bg-transparent text-gray-900 ring-0 ring-inset ring-gray-300 hover:bg-gray-50 delay-[0.9s] lg:delay-[0.9s]"
           }`}
           id="language-selector"
           aria-expanded="true"
