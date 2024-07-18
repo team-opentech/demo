@@ -3,6 +3,8 @@ import {
   useStylesScoped$,
   useStore,
   useVisibleTask$,
+  useContext,
+  useTask$,
 } from "@builder.io/qwik";
 import styles from "./header.css?inline";
 import { useLocation } from "@builder.io/qwik-city";
@@ -18,6 +20,7 @@ import menuIcon2 from "~/assets/animations/menu2.json";
 import { OtPurpleArrow } from "../icons/ot-purple-arrow";
 import IGIcon from "../../assets/svg/white-circle-ig.svg?jsx";
 import LinkedinIcon from "../../assets/svg/white-circle-linkedin.svg?jsx";
+import { PortafolioContext } from "~/context";
 
 export default component$(() => {
   const t = inlineTranslate();
@@ -26,6 +29,16 @@ export default component$(() => {
   const location = useLocation();
   const pathname = location.url.pathname;
   const scheduleAsesory = t("home.scheduleAsesory@@Talk to Us");
+
+  const portafolioState = useContext(PortafolioContext);
+  const colorheader = portafolioState.colorheader;
+
+  useTask$(({ track }) => {
+    track(() => portafolioState.colorheader);
+    console.log("Portafolio context updated:", portafolioState.colorheader);
+  });
+
+  console.log("Color Header value", colorheader);
 
   const getPath = translatePath();
 
@@ -54,7 +67,7 @@ export default component$(() => {
       href: contactPath,
     },
   ];
-// eslint-disable-next-line qwik/no-use-visible-task
+
   useVisibleTask$(() => {
     const menuIconContainer = document.getElementById("menuIconContainer");
     const menuIconContainer2 = document.getElementById("menuIconContainer2");
@@ -76,7 +89,7 @@ export default component$(() => {
 
   return (
     <section
-      class={`fixed w-full top-0 left-0 z-50 bg-white h-[94px] lg:h-[120px]`}
+      class={`fixed w-full top-0 left-0 z-50 bg-transparent h-[94px] lg:h-[120px]`}
     >
       <div class="fixed top-0 left-0 right-0 flex flex-row max-w-[1290px] mx-auto px-4 lg:px-12 w-full z-50 py-7 justify-between">
         <div class="flex flex-row items-center cursor-pointer">
@@ -104,7 +117,6 @@ export default component$(() => {
                 }`}
               />
             </div>
-
             <p
               class={`text-xs lg:text-base font-medium z-50 transition-all ease-in select-none ${
                 state.isToggled
@@ -124,6 +136,8 @@ export default component$(() => {
             <OpentechButton
               title={scheduleAsesory}
               isGoogleAppointment={true}
+              backgroundColor={state.isToggled ? "bg-ot-white" : "bg-ot-black"}
+              textColor={state.isToggled ? "text-ot-black" : "text-ot-white"}	
               classes={
                 "hidden lg:block py-2 px-4 hover:scale-[1.1] transition-all duration-300 z-50 active:scale-[1.1]"
               }
@@ -135,18 +149,11 @@ export default component$(() => {
           </div>
         </div>
         <div class="flex flex-row items-center">
-          <a href="https://lccopen.tech/" class="relative">
+          <a href="https://lccopen.tech/" class="relative z-50">
             <div
               class={`flex h-auto w-auto transition-opacity ease-in-out duration-[3s]`}
             >
-              <OtIcon class="h-6 lg:h-10" />
-            </div>
-            <div
-              class={`absolute top-0 left-0 right-0 flex h-auto w-auto transition-opacity ease-in-out duration-[3s] ${
-                state.isToggled ? "visible opacity-1" : "opacity-0"
-              }`}
-            >
-              <OtWhiteIcon class="h-6 lg:h-10" />
+              {state.isToggled ? <OtWhiteIcon class="h-6 lg:h-10" />: <OtIcon class="h-6 lg:h-10" />}
             </div>
           </a>
         </div>

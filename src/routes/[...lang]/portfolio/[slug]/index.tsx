@@ -1,21 +1,13 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useContext, useStore, useTask$, useVisibleTask$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
-import {
-  Content,
-  fetchOneEntry,
-  getBuilderSearchParams,
-} from "@builder.io/sdk-qwik";
+import { BuilderContent, Content, fetchOneEntry, getBuilderSearchParams } from "@builder.io/sdk-qwik";
 import { customComponents } from "~/components/gallery/gallery";
+import { PortafolioContext } from "~/context";
 
-// Define Builder's public API key and content model.
-// TO DO: Replace with your Public API Key
 export const BUILDER_PUBLIC_API_KEY = import.meta.env.PUBLIC_BUILDER_API_KEY;
 export const BUILDER_MODEL = "portfolio";
 
-// Define a route loader function that loads
-// content from Builder based on the URL.
 export const useBuilderContent = routeLoader$(async ({ url, error }) => {
-  // Fetch content for the specified model using the API key.
   const builderContent = await fetchOneEntry({
     model: BUILDER_MODEL,
     apiKey: BUILDER_PUBLIC_API_KEY,
@@ -25,17 +17,26 @@ export const useBuilderContent = routeLoader$(async ({ url, error }) => {
     },
   });
 
-  // Return the fetched content.
   return builderContent;
 });
 
-// Define a component that renders Builder content
-// using Qwik's Content component.
 export default component$(() => {
-  // Call the useBuilderContent function to get the content.
   const content = useBuilderContent();
-  // Specify the content model, pass the fetched content,
-  // and provide the Public API Key
+  const portafolioState = useContext(PortafolioContext);
+
+  const colorheader = content.value?.data?.colorheader;
+
+  useTask$(({ track }) => {
+    track(() => content.value);
+    const colorheader = content.value?.data?.colorheader;
+    if (colorheader !== undefined) {
+      console.log("Setting colorheader to", colorheader); // Log para verificar el valor
+      portafolioState.colorheader = colorheader;
+    } else {
+      console.log("colorheader not defined in content", content.value);
+    }
+  });
+
   return (
     <Content
       model={BUILDER_MODEL}

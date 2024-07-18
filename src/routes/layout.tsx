@@ -43,15 +43,15 @@ export default component$(() => {
         window.scrollTo(0, 0);
       }
     }
-    const layout = document.getElementById("layout");
-    if (layout) layout.classList.remove("opacity-0");
+    //const layout = document.getElementById("layout");
+    //if (layout) layout.classList.remove("opacity-0");
   });
 
   return (
     <PaginationProvider>
       <main>
         <Header />
-        <div id="layout" class="mt-[124px] opacity-0 lg:mt-[150px]">
+        <div id="layout" class="opacity-100">
           <Slot />
         </div>
         <Footer />

@@ -7,6 +7,7 @@ export interface PortafolioState {
   currentPost: PortafolioInterface[];
   totalPost: number;
   allPost: PortafolioInterface[];
+  colorheader: boolean;
 }
 
 export const PortafolioContext =
