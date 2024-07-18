@@ -114,10 +114,29 @@ export default component$(() => {
             }}
           >
             <div class="relative h-6 lg:h-10 w-6 lg:w-10 z-50">
-              <div id="menuIconContainer" class={`absolute top-0 left-0`} />
+              <div
+                id="menuIconContainer"
+                class={`absolute top-0 left-0 ${
+                  state.isToggled
+                    ? "opacity-0"
+                    : "opacity-100 transition-all duration-300 delay-[0.8s]"
+                }`}
+              />
+              <div
+                id="menuIconContainer2"
+                class={`absolute top-0 left-0 ${
+                  state.isToggled
+                    ? "opacity-100"
+                    : "opacity-0 transition-all duration-300 delay-[0.9s]"
+                }`}
+              />
             </div>
             <p
-              class={`text-xs lg:text-base font-medium z-50 transition-all ease-in select-none text-black`}
+              class={`text-xs lg:text-base font-medium z-50 transition-all ease-in select-none ${
+                state.isToggled
+                  ? "text-white duration-300 delay-[1s]"
+                  : "text-black duration-[0.05s]"
+              }`}
             >
               {t("header.menu@@Menu")}
             </p>
@@ -131,8 +150,8 @@ export default component$(() => {
             <OpentechButton
               title={scheduleAsesory}
               isGoogleAppointment={true}
-              backgroundColor={"bg-ot-black"}
-              textColor={"text-ot-white"}
+              backgroundColor={state.isToggled ? "bg-ot-white" : "bg-ot-black"}
+              textColor={state.isToggled ? "text-ot-black" : "text-ot-white"}
               classes={
                 "hidden lg:block py-2 px-4 hover:scale-[1.1] transition-all duration-300 z-50 active:scale-[1.1]"
               }
@@ -146,9 +165,13 @@ export default component$(() => {
         <div class="flex flex-row items-center">
           <a href="https://lccopen.tech/" class="relative z-50">
             <div
-              class={`flex h-auto w-auto`}
+              class={`flex h-auto w-auto transition-opacity ease-in-out duration-[3s]`}
             >
-              <OtIcon class="h-6 lg:h-10" />
+              {state.isToggled ? (
+                <OtWhiteIcon class="h-6 lg:h-10" />
+              ) : (
+                <OtIcon class="h-6 lg:h-10" />
+              )}
             </div>
           </a>
         </div>
