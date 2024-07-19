@@ -31,6 +31,7 @@ export const PaginationProvider = component$(() => {
     currentPost: [],
     totalPost: 0,
     allPost: [],
+    colorheader: false,
   });
 
   useContextProvider(CaseStudiesContext, caseStudiesPagination);
