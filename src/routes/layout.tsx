@@ -47,8 +47,8 @@ export default component$(() => {
         window.scrollTo(0, 0);
       }
     }
-    //const layout = document.getElementById("layout");
-    //if (layout) layout.classList.remove("opacity-0");
+    const layout = document.getElementById("layout");
+    if (layout) layout.classList.remove("opacity-0");
   });
   // const portafolioState = useContext(PortafolioContext);
   //   const colorheader = portafolioState.colorheader;
@@ -64,7 +64,7 @@ export default component$(() => {
       <main>
         {isSinglePortfolioView ? <HeaderPortfolio /> : <Header />}
         {/* <Header /> */}
-        <div id="layout" class="opacity-100">
+        <div id="layout" class={isSinglePortfolioView?"opacity-100":"mt-[124px] opacity-0 lg:mt-[150px]"}>
           <Slot />
         </div>
         <Footer />
