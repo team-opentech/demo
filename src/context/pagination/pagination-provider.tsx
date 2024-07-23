@@ -7,6 +7,7 @@ import {
 import { CaseStudiesContext, CaseStudiesState } from "~/context";
 import { BlogContext, BlogState } from "~/context";
 import { PortafolioContext, PortafolioState } from "~/context";
+import { HeaderContext, HeaderState } from "~/context";
 
 export const PaginationProvider = component$(() => {
   const caseStudiesPagination = useStore<CaseStudiesState>({
@@ -31,12 +32,18 @@ export const PaginationProvider = component$(() => {
     currentPost: [],
     totalPost: 0,
     allPost: [],
-    colorheader: false,
+  });
+
+  const headerState = useStore<HeaderState>({
+    bgheader: "transparent",
+    menuIconColor: "black",
+    logocolor: "black",
   });
 
   useContextProvider(CaseStudiesContext, caseStudiesPagination);
   useContextProvider(BlogContext, blogPagination);
   useContextProvider(PortafolioContext, portafolioPagination);
+  useContextProvider(HeaderContext, headerState);
 
   return <Slot />;
 });
