@@ -3,7 +3,9 @@ import {
   component$,
   useContextProvider,
   useStore,
+  useTask$,
 } from "@builder.io/qwik";
+import header from "~/components/header/header";
 import { CaseStudiesContext, CaseStudiesState } from "~/context";
 import { BlogContext, BlogState } from "~/context";
 import { PortafolioContext, PortafolioState } from "~/context";
@@ -38,7 +40,12 @@ export const PaginationProvider = component$(() => {
     bgheader: "transparent",
     menuIconColor: "black",
     logocolor: "black",
+    isMenuOpen: false,
+    isScrolled: false,
+    headerIndex: 0,
+    previousHeaderIndex: 0,
   });
+
 
   useContextProvider(CaseStudiesContext, caseStudiesPagination);
   useContextProvider(BlogContext, blogPagination);

@@ -33,20 +33,3 @@ header li a:hover {
   text-decoration: underline;
 }
 
-.menu-animation {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0);
-  width: 1px;
-  height: 1px;
-  background-color: black;
-  border-radius: 50%;
-  z-index: 40;
-  transition: transform 1.5s ease-in-out;
-  transform-origin: center;
-}
-
-.menu-animation-active {
-  transform: translate(-50%, -50%) scale(10000);
-}

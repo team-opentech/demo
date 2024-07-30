@@ -8,6 +8,7 @@ import { RouterHead } from "./components/router-head/router-head";
 import { useQwikSpeak } from "qwik-speak";
 import { config } from "./speak-config";
 import { translationFn } from "./speak-functions";
+import { PaginationProvider } from "~/context";
 
 import "./global.css";
 
@@ -19,7 +20,6 @@ export default component$(() => {
    * Dont remove the `<head>` and `<body>` elements.
    */
 
-  
   useQwikSpeak({ config, translationFn });
   return (
     <QwikCityProvider>
@@ -28,18 +28,20 @@ export default component$(() => {
         <RouterHead />
       </head>
       <body lang="en">
-        <RouterOutlet />
-        <ServiceWorkerRegister />
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style="display:none"
-            src={`https://www.facebook.com/tr?id=${
-              import.meta.env.PUBLIC_FACEBOOK_PIXEL
-            }&ev=PageView&noscript=1`}
-          />
-        </noscript>
+        <PaginationProvider>
+          <RouterOutlet />
+          <ServiceWorkerRegister />
+          <noscript>
+            <img
+              height="1"
+              width="1"
+              style="display:none"
+              src={`https://www.facebook.com/tr?id=${
+                import.meta.env.PUBLIC_FACEBOOK_PIXEL
+              }&ev=PageView&noscript=1`}
+            />
+          </noscript>
+        </PaginationProvider>
       </body>
     </QwikCityProvider>
   );

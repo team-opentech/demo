@@ -15,7 +15,8 @@ export const LanguageSelector = component$((props: any) => {
   const pathname = useLocation().url.pathname;
   const t = inlineTranslate();
   const dn = useDisplayName();
-  const openedMenu = props.openedMenu;
+  // const openedMenu = props.openedMenu;
+  const {buttonTextColor } = props;
   const getPath = translatePath();
 
   const loc = useLocation();
@@ -38,11 +39,7 @@ export const LanguageSelector = component$((props: any) => {
         {/* <LangIcon /> */}
         <button
           type="button"
-          class={`inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm transition-all duration-300 ${
-            openedMenu
-              ? "bg-transparent text-white ring-0 ring-inset ring-gray-900 hover:bg-black delay-[0.2s] lg:delay-[0.4s]"
-              : "bg-transparent text-gray-900 ring-0 ring-inset ring-gray-300 hover:bg-gray-50 delay-[0.9s] lg:delay-[0.9s]"
-          }`}
+          class={`inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm font-semibold shadow-sm bg-white text-${buttonTextColor} ring-0 ring-inset ring-gray-900 hover:bg-black delay-[0.2s] lg:delay-[0.4s] transition-all duration-300`}
           id="language-selector"
           aria-expanded="true"
           aria-haspopup="true"
@@ -50,7 +47,7 @@ export const LanguageSelector = component$((props: any) => {
             state.isToggled = !state.isToggled;
           }}
         >
-          <LangIcon opened={openedMenu} />
+          <LangIcon fill={buttonTextColor==="white"?"fill-white":"fill-black"}/>
 
           {state.selectedLanguage.split("-")[0].toUpperCase()}
           <svg
