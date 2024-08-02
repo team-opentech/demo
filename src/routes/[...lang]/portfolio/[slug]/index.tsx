@@ -1,6 +1,8 @@
 import {
   component$,
   useContext,
+  useContextProvider,
+  useSignal,
   useStore,
   useTask$,
   useVisibleTask$,
@@ -13,7 +15,7 @@ import {
   getBuilderSearchParams,
 } from "@builder.io/sdk-qwik";
 import { customComponents } from "~/components/builder-registry";
-import { HeaderContext } from "~/context";
+import { HeaderContext } from "~/root";
 
 export const BUILDER_PUBLIC_API_KEY = import.meta.env.PUBLIC_BUILDER_API_KEY;
 export const BUILDER_MODEL = "portfolio";
@@ -31,65 +33,35 @@ export const useBuilderContent = routeLoader$(async ({ url }) => {
   return builderContent;
 });
 
+function selectHeaderIndex(props: string): number {
+  switch (props) {
+    case 'transparent_black_black':
+      return 0;
+    case 'transparent_white_white':
+      return 1;
+    case 'white_black_black':
+      return 2;
+    case 'black_white_white':
+      return 3;
+    default:
+      return 0; // Valor por defecto
+  }
+}
+
 export default component$(() => {
   const content = useBuilderContent();
-  const headerState = useContext(HeaderContext);
+  const headerContext = useContext(HeaderContext);
 
   useTask$(({ track }) => {
     track(() => content.value);
-
     const bgheader = content.value?.data?.bgheader?.toLowerCase();
     const logocolor = content.value?.data?.logocolor?.toLowerCase();
     const menuIconColor = content.value?.data?.menuIconColor?.toLowerCase();
 
-    if (
-      bgheader !== undefined &&
-      logocolor !== undefined &&
-      menuIconColor !== undefined
-    ) {
-      headerState.bgheader = bgheader;
-      headerState.logocolor = logocolor;
-      headerState.menuIconColor = menuIconColor;
-
-      // Determine headerIndex based on bgheader, logocolor, and menuIconColor
-      if (
-        bgheader === "transparent" &&
-        logocolor === "black" &&
-        menuIconColor === "black"
-      ) {
-        headerState.headerIndex = 0;
-      } else if (
-        bgheader === "transparent" &&
-        logocolor === "white" &&
-        menuIconColor === "white"
-      ) {
-        headerState.headerIndex = 1;
-      } else if (
-        bgheader === "white" &&
-        logocolor === "black" &&
-        menuIconColor === "black"
-      ) {
-        headerState.headerIndex = 2;
-      } else if (
-        bgheader === "black" &&
-        logocolor === "white" &&
-        menuIconColor === "white"
-      ) {
-        headerState.headerIndex = 3;
-      }
-      console.log(
-        "Valores actuales en header context: ",
-        headerState.bgheader,
-        headerState.logocolor,
-        headerState.menuIconColor,
-        headerState.headerIndex
-      );
-    } else {
-      console.log(
-        "Colores en el header definidos en el contenido",
-        content.value
-      );
+    if (bgheader !== undefined && logocolor !== undefined && menuIconColor !== undefined) {
+      headerContext.headerIndex = selectHeaderIndex(`${bgheader}_${logocolor}_${menuIconColor}`);
     }
+    console.log("Signal new value in portfolio: ", headerContext.headerIndex)
   });
 
   return (

@@ -2,14 +2,15 @@ import {
   Slot,
   component$,
   useContextProvider,
+  useSignal,
   useStore,
   useTask$,
 } from "@builder.io/qwik";
-import header from "~/components/header/header";
+// import header from "~/components/header/header";
 import { CaseStudiesContext, CaseStudiesState } from "~/context";
 import { BlogContext, BlogState } from "~/context";
 import { PortafolioContext, PortafolioState } from "~/context";
-import { HeaderContext, HeaderState } from "~/context";
+// import { HeaderContext } from "~/context";
 
 export const PaginationProvider = component$(() => {
   const caseStudiesPagination = useStore<CaseStudiesState>({
@@ -36,21 +37,20 @@ export const PaginationProvider = component$(() => {
     allPost: [],
   });
 
-  const headerState = useStore<HeaderState>({
-    bgheader: "transparent",
-    menuIconColor: "black",
-    logocolor: "black",
-    isMenuOpen: false,
-    isScrolled: false,
-    headerIndex: 0,
-    previousHeaderIndex: 0,
-  });
-
+  // const headerState = useStore<HeaderState>({
+  //   bgheader: "transparent",
+  //   menuIconColor: "black",
+  //   logocolor: "black",
+  //   isMenuOpen: false,
+  //   isScrolled: false,
+  //   headerIndex: 1,
+  //   previousHeaderIndex: 0,
+  // });
 
   useContextProvider(CaseStudiesContext, caseStudiesPagination);
   useContextProvider(BlogContext, blogPagination);
   useContextProvider(PortafolioContext, portafolioPagination);
-  useContextProvider(HeaderContext, headerState);
+  // useContextProvider(HeaderContext, headerState);
 
   return <Slot />;
 });

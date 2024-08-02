@@ -13,14 +13,14 @@ import LinkedinIcon from "~/assets/svg/white-circle-linkedin.svg?jsx";
 import styles from "./menu.css?inline";
 import { useLocation } from "@builder.io/qwik-city";
 import { inlineTranslate, translatePath } from "qwik-speak";
-import { HeaderContext } from "~/context";
+import { HeaderContext } from "~/root";
 import lottie from "lottie-web";
 import menuIcon from "~/assets/animations/menu.json";
 import menuIcon2 from "~/assets/animations/menu2.json";
 
-export default component$(() => {
+export default component$(({ menuIconColor }: any) => {
   const headerState = useContext(HeaderContext);
-  const state = useStore({ headerIndex: headerState.headerIndex });
+  const state = useStore({ isMenuOpen: headerState.isMenuOpen, menuIconColor: menuIconColor });
   const t = inlineTranslate();
   const location = useLocation();
   const pathname = location.url?.pathname;
@@ -60,6 +60,8 @@ export default component$(() => {
 
   useVisibleTask$(({ track, cleanup }) => {
     track(() => headerState.isMenuOpen);
+    track(() => headerState.headerIndex);
+    track(() => state.menuIconColor);
 
     const menuIconBlack = document.getElementById("menuIconBlack");
     const menuIconWhite = document.getElementById("menuIconWhite");
@@ -100,6 +102,7 @@ export default component$(() => {
         class="relative flex flex-col items-center lg:mr-8 "
         onClick$={() => {
           headerState.isMenuOpen = !headerState.isMenuOpen;
+          headerState.previousHeaderIndex = headerState.headerIndex;
           headerState.headerIndex = 1;
         }}
       >
@@ -107,7 +110,7 @@ export default component$(() => {
           <div
             id="menuIconBlack"
             class={`absolute top-0 left-0 ${
-              headerState.isMenuOpen
+              state.isMenuOpen
                 ? "opacity-0"
                 : "opacity-100 transition-all duration-300 delay-[0.8s]"
             }`}
@@ -115,7 +118,7 @@ export default component$(() => {
           <div
             id="menuIconWhite"
             class={`absolute top-0 left-0 ${
-              headerState.isMenuOpen
+              state.isMenuOpen
                 ? "opacity-100"
                 : "opacity-0 transition-all duration-300 delay-[0.9s]"
             }`}
@@ -123,7 +126,7 @@ export default component$(() => {
         </div>
         <p
           class={`text-xs lg:text-base font-medium z-50 transition-all ease-in select-none ${
-            headerState.isMenuOpen
+            state.isMenuOpen
               ? "text-white duration-300 delay-[1s]"
               : "text-black duration-[0.05s]"
           }`}
@@ -132,13 +135,13 @@ export default component$(() => {
         </p>
         <div
           class={`menu-animation ${
-            headerState.isMenuOpen ? "menu-animation-active" : ""
+            state.isMenuOpen ? "menu-animation-active" : ""
           }`}
         />
       </div>
       <div
         class={`fixed top-1/3 left-0 right-0 flex-row max-w-[1290px] mx-auto px-12 z-50 transition-all ease-in ${
-          headerState.isMenuOpen
+          state.isMenuOpen
             ? " opacity-1 visible duration-300 delay-[0.6s]"
             : " opacity-0 invisible duration-[0.6s]"
         }`}

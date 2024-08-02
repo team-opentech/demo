@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, createContextId, Signal, useContextProvider, useSignal, useStore, useTask$ } from "@builder.io/qwik";
 import {
   QwikCityProvider,
   RouterOutlet,
@@ -9,8 +9,22 @@ import { useQwikSpeak } from "qwik-speak";
 import { config } from "./speak-config";
 import { translationFn } from "./speak-functions";
 import { PaginationProvider } from "~/context";
-
 import "./global.css";
+
+export interface HeaderState {
+ headerIndex: number;
+}
+
+// export const HeaderContext = createContextId<Signal<number>>('header-context');
+export interface HeaderState {
+    isMenuOpen: boolean,
+    isScrolled: boolean,
+    headerIndex: number,
+    previousHeaderIndex: number,
+}
+
+export const HeaderContext =
+  createContextId<HeaderState>("header-context");
 
 export default component$(() => {
   /**
@@ -19,8 +33,17 @@ export default component$(() => {
    *
    * Dont remove the `<head>` and `<body>` elements.
    */
-
+  // const headerState = useSignal(0);
+  const headerState = useStore({headerIndex: 0, isMenuOpen: false, previousHeaderIndex: 0});
   useQwikSpeak({ config, translationFn });
+
+  useTask$(({ track }) => {
+    track(() => headerState.headerIndex);
+    
+    console.log("HeaderIndex value changed: ", headerState.headerIndex);
+  });
+
+  useContextProvider(HeaderContext, headerState);
   return (
     <QwikCityProvider>
       <head>
